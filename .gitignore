@@ -1,0 +1,28 @@
+# 构建产物
+dist/
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# 运行时数据（保留给用户/AI 热编辑）
+# config 和 link-record 建议纳入版本管理，这里默认不忽略
+# 如不想误提交可取消下一行
+# _分配项目组工具/config.json
+
+# IDE / 系统
+.vs/
+.idea/
+*.user
+*_i.c
+*_p.c
+Thumbs.db
+
+# 日志
+*.log
+
+# junction 链接（共享规范目录，不随本库推送）
+.opencode/
+.trae/
+.workbuddy/

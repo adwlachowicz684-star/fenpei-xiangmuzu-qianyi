@@ -1,0 +1,118 @@
+{
+  "ignoreUnderscore": true,
+  "autoSelect": true,
+  "quickLink": true,
+  "aiAgentCmd": "",
+  "lastLib": "E:\\_project\\AIProject_opencode",
+  "projectTabs": [
+    {
+      "name": "\u65B0\u9875\u7B7E",
+      "projects": [
+        "E:\\_tools\\Tools_DIY\\\u5206\u914D\u9879\u76EE\u7EC4"
+      ]
+    },
+    {
+      "name": "\u9ED8\u8BA4",
+      "projects": [
+        "E:\\_project\\Project_\u6E38\u620F\u62C6\u89E3\\\u82F1\u96C4\u8054\u76DF\u65E0\u5C3D\u72C2\u6F6E"
+      ]
+    }
+  ],
+  "groupTabs": [
+    {
+      "name": "\u5F00\u53D1",
+      "groups": [
+        "E:\\_project\\AIProject_opencode\\\u6559\u5B66_\u4F5C\u4E1A\u6279\u6539"
+      ]
+    },
+    {
+      "name": "\u9ED8\u8BA4",
+      "groups": [
+        "E:\\_project\\AIProject_opencode\\\u6E38\u620F\u5F00\u53D1_godot"
+      ]
+    },
+    {
+      "name": "\u65B0\u9875\u7B7E",
+      "groups": [
+        "E:\\_project\\AIProject_opencode\\DIY\u5DE5\u5177\u521B\u5EFA",
+        "E:\\_project\\AIProject_opencode\\\u5C0F\u8BF4\u521B\u4F5C",
+        "E:\\_project\\AIProject_opencode\\\u5185\u5BB9\u521B\u4F5C",
+        "E:\\_project\\AIProject_opencode\\\u6CD5\u5F8B\u652F\u6301",
+        "E:\\_project\\AIProject_opencode\\\u6E38\u620F\u5F00\u53D1_Cocos"
+      ]
+    },
+    {
+      "name": "\u521B\u4F5C",
+      "groups": []
+    }
+  ],
+  "projects": [
+    "E:\\_tools\\Tools_DIY\\\u5206\u914D\u9879\u76EE\u7EC4"
+  ],
+  "groups": [
+    "E:\\_project\\AIProject_opencode\\\u6559\u5B66_\u4F5C\u4E1A\u6279\u6539"
+  ],
+  "locked": [
+    "E:\\_project\\Project_\u6E38\u620F\u62C6\u89E3\\\u82F1\u96C4\u8054\u76DF\u65E0\u5C3D\u72C2\u6F6E"
+  ],
+  "mcpTools": {
+    "get_manual": true,
+    "get_status": true,
+    "list_groups": true,
+    "list_projects": true,
+    "select_folder": true,
+    "get_selection": true,
+    "list_agents": true,
+    "list_skills": true,
+    "refresh_content": true,
+    "create_link": true,
+    "remove_link": true,
+    "list_links": true,
+    "deploy_skill": true,
+    "capture_screen": true,
+    "capture_window": true,
+    "list_windows": true
+  },
+  "mcpEnabled": true,
+  "linkAgents": {
+    ".github": false,
+    ".kiro": false,
+    ".cline": false,
+    ".gemini": false,
+    ".\u4E1C\u5B98\u65B9": true,
+    ".opencode": true,
+    ".codex": false,
+    ".agents": false,
+    ".claude": false,
+    ".cursor": false,
+    ".windsurf": false,
+    ".aider": false,
+    ".roo": false,
+    ".kilocode": false,
+    ".trae": false,
+    ".qwen": false,
+    ".agent": false
+  },
+  "customLinkAgents": [
+    ".\u4E1C\u5B98\u65B9"
+  ],
+  "linkAgentsPinned": [
+    ".opencode",
+    ".codex",
+    ".claude",
+    ".gemini",
+    ".\u4E1C\u5B98\u65B9"
+  ],
+  "linkAgentRemarks": {
+    ".\u4E1C\u5B98\u65B9": "\u7B2C\u4E09\u4E2A\u6839\u6DF1\u8482\u56FA",
+    ".opencode": "\u53D1\u653E"
+  },
+  "windowWidth": 1536,
+  "windowHeight": 1030,
+  "panelColWidths": [
+    29.28074470141081,
+    28.916592908260153,
+    41.80266239032904
+  ],
+  "logRowHeight": 196
+}

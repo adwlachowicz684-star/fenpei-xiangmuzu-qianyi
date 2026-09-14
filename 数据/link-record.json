@@ -1,0 +1,166 @@
+{
+  "clusters": [],
+  "links": [
+    {
+      "project": "..\\..\\_tools\\Tools_DIY\\\u5206\u914D\u9879\u76EE\u7EC4\u8FC1\u79FB",
+      "lib": "..\\AIProject_\u9879\u76EE\u7EC4\\AI\u73AF\u5883\u5DE5\u5177\\DIY\u5DE5\u5177\u521B\u5EFA",
+      "group": "DIY\u5DE5\u5177\u521B\u5EFA",
+      "created": "2026-08-24 18:22:22",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..\\AIProject_\u9879\u76EE\\\u6E38\u620F\u5F00\u53D1\\\u82F1\u96C4\u8054\u76DF\u65E0\u5C3D\u72C2\u6F6E",
+      "lib": "..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u5F00\u53D1\\\u6E38\u620F\u5F00\u53D1_Cocos",
+      "group": "\u6E38\u620F\u5F00\u53D1_Cocos",
+      "created": "2026-08-27 07:12:34",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..\\..\\_tools\\Tools_DIY\\\u5206\u914D\u9879\u76EE\u7EC4",
+      "lib": "..\\AIProject_\u9879\u76EE\u7EC4\\\u521B\u4F5C\\\u521B\u4F5C_\u5C0F\u8BF4",
+      "group": "\u521B\u4F5C_\u5C0F\u8BF4",
+      "created": "2026-08-24 18:56:25",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..\\AIProject_\u9879\u76EE\\\u5DE5\u5177\u5F00\u53D1\\AIProject_skill\u548Cagent\u521B\u5EFA",
+      "lib": "..\\AIProject_\u9879\u76EE\u7EC4\\AI\u73AF\u5883\u5DE5\u5177\\skill\u548Cagent\u521B\u5EFA",
+      "group": "skill\u548Cagent\u521B\u5EFA",
+      "created": "2026-08-25 19:05:05",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..\\AIProject_\u9879\u76EE\\\u6E38\u620F\u5F00\u53D1\\\u5408\u6210\u6253\u86C7",
+      "lib": "..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u8BBE\u8BA1\\\u6E38\u620F\u62C6\u89E3",
+      "group": "\u6E38\u620F\u62C6\u89E3",
+      "created": "2026-08-27 20:07:41",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..\\AIProject_\u9879\u76EE\\\u6E38\u620F\u5F00\u53D1\\\u68A6\u4E4B\u5F62",
+      "lib": "..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u8BBE\u8BA1\\\u6E38\u620F\u62C6\u89E3",
+      "group": "\u6E38\u620F\u62C6\u89E3",
+      "created": "2026-08-27 21:24:34",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..\\..\\..\\..\\_project\\AIProject_\u9879\u76EE\\\u6E38\u620F\u5F00\u53D1\\\u68A6\u4E4B\u5F62",
+      "lib": "..\\..\\..\\..\\_project\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u5F00\u53D1\\\u6E38\u620F\u5F00\u53D1_Cocos",
+      "group": "\u6E38\u620F\u5F00\u53D1_Cocos",
+      "created": "2026-08-28 13:49:45",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae"
+      ]
+    },
+    {
+      "project": "..",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\AI\u73AF\u5883\u5DE5\u5177\\DIY\u5DE5\u5177\u521B\u5EFA",
+      "group": "DIY\u5DE5\u5177\u521B\u5EFA",
+      "created": "2026-09-02 18:21:35",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    },
+    {
+      "project": "..\\..\\..\\\u6E38\u620F\u5F00\u53D1\\\u68A6\u4E4B\u5F62\u518D\u5236",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u5F00\u53D1\\\u6E38\u620F\u5F00\u53D1_Cocos",
+      "group": "\u6E38\u620F\u5F00\u53D1_Cocos",
+      "created": "2026-09-02 13:39:37",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    },
+    {
+      "project": "..\\..\\AIProject_skill\u548Cagent\u521B\u5EFA",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\AI\u73AF\u5883\u5DE5\u5177\\skill\u548Cagent\u521B\u5EFA",
+      "group": "skill\u548Cagent\u521B\u5EFA",
+      "created": "2026-09-02 18:21:38",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    },
+    {
+      "project": "..\\..\\..\\\u6E38\u620F\u5F00\u53D1\\\u82F1\u96C4\u8054\u76DF\u65E0\u5C3D\u72C2\u6F6E",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u5F00\u53D1\\\u6E38\u620F\u5F00\u53D1_Cocos",
+      "group": "\u6E38\u620F\u5F00\u53D1_Cocos",
+      "created": "2026-09-02 18:21:51",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    },
+    {
+      "project": "..\\..\\..\\\u6E38\u620F\u5F00\u53D1\\\u5408\u6210\u6253\u86C7",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u8BBE\u8BA1\\\u6E38\u620F\u62C6\u89E3",
+      "group": "\u6E38\u620F\u62C6\u89E3",
+      "created": "2026-09-02 18:21:54",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    },
+    {
+      "project": "..\\..\\..\\\u6E38\u620F\u5F00\u53D1\\\u68A6\u4E4B\u5F62",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u5F00\u53D1\\\u6E38\u620F\u5F00\u53D1_Cocos",
+      "group": "\u6E38\u620F\u5F00\u53D1_Cocos",
+      "created": "2026-09-02 18:21:57",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    },
+    {
+      "project": "..\\..\\..\\\u6E38\u620F\u5F00\u53D1\\cocos\u811A\u672C\u6D4B\u8BD5",
+      "lib": "..\\..\\..\\..\\AIProject_\u9879\u76EE\u7EC4\\\u6E38\u620F\u5F00\u53D1\\\u6E38\u620F\u5F00\u53D1_Cocos",
+      "group": "\u6E38\u620F\u5F00\u53D1_Cocos",
+      "created": "2026-09-05 15:42:48",
+      "cluster": "",
+      "names": [
+        ".opencode",
+        ".trae",
+        ".workbuddy"
+      ]
+    }
+  ]
+}

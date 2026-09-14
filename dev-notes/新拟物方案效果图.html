@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分配项目组 · 深色新拟物方案效果图</title>
+<style>
+  /* ============================================================
+     深色新拟物（Dark Neumorphism）方案效果图
+     参数与 src/App/App.xaml 完全对应
+     ============================================================ */
+  :root {
+    /* 基础调色板 */
+    --bg:          #1F2126;
+    --bar:         #262931;
+    --card:        #2A2E37;
+    --main:        #ECEDF0;
+    --muted:       #9AA0AA;
+    --accent:      #5D9BFF;
+    --border:      #38404B;
+
+    /* 新拟物专用表面（向背景靠拢：同色浮雕原则） */
+    --surface:     #262A33;
+    --surface-lo:  #22262F;
+    --surface-hi:  #303541;
+    --inset:       #1B1E24;
+    --accent-tint: #303541;
+
+    /* 外凸描边：左上浅、右下深（多段柔和过渡） */
+    --bezel:       linear-gradient(135deg, #3A404B 0%, #2F343E 35%, #272C35 65%, #21252C 100%);
+    --bezel-hi:    linear-gradient(135deg, #434A56 0%, #363C47 35%, #2D323C 65%, #272C34 100%);
+    --bezel-press: linear-gradient(135deg, #191C22 0%, #23272E 45%, #2C313A 100%);
+
+    /* 阴影（WPF DropShadow 315° 右下 / 135° 左上 换算）
+       新拟态双阴影：右下深影 + 左上浅影 = 圆弧平缓爬升的软垫隆起
+       浅影增强至可见、深影降低透明度、模糊加大 → 更平缓柔和 */
+    --shadow:       3px 3px 26px rgba(0,0,0,0.20), -3px -3px 26px rgba(255,255,255,0.10);
+    --shadow-small: 2px 2px 18px rgba(0,0,0,0.18), -2px -2px 18px rgba(255,255,255,0.08);
+    --shadow-float: 4px 4px 34px rgba(0,0,0,0.20), -4px -4px 34px rgba(255,255,255,0.12);
+    --shadow-inner: inset 2px 2px 14px rgba(0,0,0,0.16), inset -2px -2px 14px rgba(255,255,255,0.08);
+
+    /* 标题浮雕 */
+    --title-emboss: linear-gradient(180deg, #F4F6FA 0%, #9FA9BA 55%, #7E8796 100%);
+    --text-emboss:  1px 1px 3.5px rgba(0,0,0,0.72);
+
+    --radius-card: 14px;
+    --radius-frame: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--main);
+    font-family: "Microsoft YaHei UI", "Segoe UI", "PingFang SC", sans-serif;
+    font-size: 13px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 100vh;
+  }
+
+  /* ---------- 通用：1px 渐变描边容器 ---------- */
+  .bezel { padding: 1px; border-radius: var(--radius-card); background: var(--bezel); }
+  .bezel-hi { background: var(--bezel-hi); }
+  .bezel-press { background: var(--bezel-press); }
+  .inner { border-radius: calc(var(--radius-card) - 1px); background: var(--card); height: 100%; }
+
+  /* ---------- 标题 ---------- */
+  .app-title {
+    font-size: 22px; font-weight: 700; color: var(--main);
+  }
+  .col-title {
+    font-size: 18px; font-weight: 600; color: var(--main);
+  }
+  .emboss-title {
+    font-size: 15px; font-weight: 600;
+    background: var(--title-emboss);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    text-shadow: var(--text-emboss);
+    filter: drop-shadow(1px 1px 3.5px rgba(0,0,0,0.72));
+  }
+  .muted { color: var(--muted); }
+
+  /* ---------- 窗口 ---------- */
+  .window {
+    background: var(--bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px #000, 0 18px 50px rgba(0,0,0,0.55);
+  }
+  .titlebar {
+    background: var(--bar);
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 12px; height: 46px;
+    border-bottom: 1px solid rgba(0,0,0,0.35);
+  }
+  .titlebar .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .titlebar .dot.r { background: #E5484D; } .titlebar .dot.y { background: #E5A54D; } .titlebar .dot.g { background: #46B45A; }
+  .titlebar .spacer { flex: 1; }
+  .tb-btn {
+    width: 30px; height: 30px; border-radius: 6px; border: none;
+    background: transparent; color: var(--muted); font-size: 13px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .12s, color .12s;
+  }
+  .tb-btn:hover { background: rgba(255,255,255,0.13); color: var(--main); }
+
+  /* ---------- 主体布局 ---------- */
+  .body { display: flex; gap: 2px; padding: 6px; }
+  .sidebar {
+    width: 52px; background: var(--bar); border-radius: 6px;
+    padding: 6px; display: flex; flex-direction: column; gap: 6px; align-items: center;
+  }
+  .sb-btn {
+    width: 34px; height: 34px; border-radius: 8px; border: none; cursor: pointer;
+    background: transparent; color: var(--muted); font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .12s, color .12s;
+  }
+  .sb-btn:hover { background: rgba(255,255,255,0.13); color: var(--main); }
+
+  .cols { display: flex; gap: 3px; flex: 1; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+
+  /* 卡片（Card）：外凸新拟物 */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius-card);
+    padding: 12px;
+    box-shadow: var(--shadow);
+    position: relative;
+    flex: 1;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  /* 内凹框（DarkFrame） */
+  .frame {
+    background: var(--inset);
+    border-radius: var(--radius-frame);
+    padding: 10px;
+    box-shadow: var(--shadow-inner);
+    flex: 1;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .frame-title {
+    font-size: 12px; color: var(--muted); font-weight: 600;
+    letter-spacing: .5px;
+  }
+
+  /* ---------- 项目/项目组条目 ---------- */
+  .item {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 7px 9px;
+    box-shadow: var(--shadow-small);
+    display: flex; align-items: center; gap: 8px;
+    cursor: pointer;
+    transition: background .12s, box-shadow .12s;
+    border: 1px solid transparent;
+    background-image: linear-gradient(var(--surface), var(--surface)), var(--bezel);
+    background-origin: border-box; background-clip: padding-box, border-box;
+  }
+  .item:hover {
+    background-image: linear-gradient(var(--surface-hi), var(--surface-hi)), var(--bezel-hi);
+    box-shadow: var(--shadow-float);
+  }
+  .item .ico { width: 14px; height: 12px; border-radius: 2px; background: #E8B84B; flex-shrink: 0; }
+  .item .name { font-size: 12px; color: var(--main); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .item .tag {
+    font-size: 10px; color: var(--muted); background: var(--inset);
+    padding: 1px 6px; border-radius: 4px; white-space: nowrap;
+  }
+
+  /* ---------- 按钮 ---------- */
+  .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    border-radius: 4px; cursor: pointer; font-size: 10px;
+    padding: 5px 10px; color: var(--muted);
+    background: var(--surface); border: 1px solid transparent;
+    background-image: linear-gradient(var(--surface), var(--surface)), var(--bezel);
+    background-origin: border-box; background-clip: padding-box, border-box;
+    box-shadow: var(--shadow-small);
+    transition: background .12s, box-shadow .12s, color .12s;
+    user-select: none;
+  }
+  .btn:hover {
+    background-image: linear-gradient(var(--surface-hi), var(--surface-hi)), var(--bezel-hi);
+    box-shadow: var(--shadow-float);
+  }
+  .btn:active {
+    background-image: linear-gradient(var(--inset), var(--inset)), var(--bezel-press);
+    box-shadow: none;
+  }
+  .btn.accent { color: var(--accent); }
+  .btn.danger { color: #E5484D; }
+  .btn.primary {
+    color: #fff; background: var(--accent); border: none;
+    box-shadow: 2px 2px 14px rgba(0,0,0,0.35), -2px -2px 14px rgba(255,255,255,0.06);
+  }
+  .btn.primary:hover { filter: brightness(1.08); box-shadow: 3px 3px 20px rgba(0,0,0,0.4), -3px -3px 20px rgba(255,255,255,0.08); }
+  .btn.primary:active { filter: brightness(0.95); box-shadow: none; }
+  .btn.disabled { opacity: 0.5; pointer-events: none; }
+  .btn.ghost {
+    background: transparent; border: none; box-shadow: none; font-size: 14px;
+    width: 30px; height: 30px; padding: 0; border-radius: 6px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .btn.ghost:hover { background: rgba(255,255,255,0.13); color: var(--main); box-shadow: none; }
+  .btn.ghost:active { background: rgba(255,255,255,0.06); box-shadow: none; }
+
+  /* ---------- 勾选框 ---------- */
+  .check {
+    display: flex; align-items: center; gap: 8px; cursor: pointer;
+    font-size: 12px; color: var(--main); user-select: none;
+  }
+  .check input { display: none; }
+  .check .box {
+    width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+    background: var(--surface); border: 1px solid transparent;
+    background-image: linear-gradient(var(--surface), var(--surface)), var(--bezel);
+    background-origin: border-box; background-clip: padding-box, border-box;
+    box-shadow: var(--shadow-small);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .12s, box-shadow .12s;
+  }
+  .check .box svg { width: 10px; height: 8px; stroke: var(--accent); stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+  .check:hover .box {
+    background-image: linear-gradient(var(--surface-hi), var(--surface-hi)), var(--bezel-hi);
+    box-shadow: var(--shadow-float);
+  }
+  .check input:checked + .box {
+    background: var(--inset);
+    background-image: none;
+    box-shadow: var(--shadow-inner);
+  }
+  .check input:checked + .box svg { opacity: 1; }
+
+  /* ---------- 输入框 ---------- */
+  .input {
+    background: var(--inset); color: var(--main);
+    border: 1px solid transparent; border-radius: 6px;
+    padding: 7px 10px; font-size: 12px; outline: none;
+    box-shadow: var(--shadow-inner);
+    background-image: linear-gradient(var(--inset), var(--inset)), var(--bezel-press);
+    background-origin: border-box; background-clip: padding-box, border-box;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .input::placeholder { color: var(--muted); }
+  .input:focus { border-color: var(--accent); box-shadow: var(--shadow-inner), 0 0 0 1px var(--accent); }
+
+  /* ---------- 滚动条 ---------- */
+  .scroll-demo {
+    height: 90px; overflow-y: auto; padding-right: 6px;
+    background: transparent;
+  }
+  .scroll-demo::-webkit-scrollbar { width: 8px; }
+  .scroll-demo::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 4px; }
+  .scroll-demo::-webkit-scrollbar-thumb {
+    background: var(--surface-hi); border-radius: 4px; border: 1px solid #383E49;
+  }
+  .scroll-demo::-webkit-scrollbar-thumb:hover { background: #3E6FB5; }
+
+  /* ---------- 组件展示区 ---------- */
+  .showcase {
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 16px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .showcase h2 {
+    font-size: 14px; font-weight: 600; color: var(--muted);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .showcase .group { display: flex; flex-direction: column; gap: 8px; }
+  .showcase .group-label { font-size: 11px; color: var(--muted); }
+  .showcase .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hint { font-size: 11px; color: #6B7280; margin-top: 2px; }
+
+  .bottom-row { display: flex; gap: 3px; }
+  .bottom-card { flex: 1; background: var(--card); border-radius: var(--radius-card); padding: 12px; box-shadow: var(--shadow); min-height: 90px; }
+</style>
+</head>
+<body>
+
+  <!-- ================= 窗口模拟 ================= -->
+  <div class="window">
+    <div class="titlebar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="app-title" style="font-size:15px;font-weight:600;color:var(--main)">分配项目组</span>
+      <span class="muted" style="font-size:11px">为项目快速分配项目组 (agent / skill)</span>
+      <span class="spacer"></span>
+      <button class="tb-btn" title="最小化">—</button>
+      <button class="tb-btn" title="最大化">▢</button>
+      <button class="tb-btn" title="关闭" style="color:#E5484D">✕</button>
+    </div>
+
+    <div class="body">
+      <!-- 侧边栏 -->
+      <div class="sidebar">
+        <button class="sb-btn" title="菜单">☰</button>
+        <button class="sb-btn" title="刷新全部">⟳</button>
+        <button class="sb-btn" title="清除无效">✕</button>
+        <button class="sb-btn" title="打开选中">⤢</button>
+        <button class="sb-btn" title="设置">⚙</button>
+      </div>
+
+      <!-- 三栏 -->
+      <div class="cols">
+        <!-- 项目 -->
+        <div class="col">
+          <div class="card">
+            <div class="emboss-title">项目</div>
+            <div class="frame">
+              <div class="item"><span class="ico"></span><span class="name">分配项目组</span><span class="tag">DIY工具创建</span></div>
+              <div class="item"><span class="ico"></span><span class="name">分配项目组迁移</span><span class="tag">DIY工具创建</span></div>
+            </div>
+            <div class="btn-row">
+              <button class="btn">新页签</button>
+              <button class="btn accent">默认 1 ▾</button>
+              <button class="btn">＋</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目组 -->
+        <div class="col">
+          <div class="card">
+            <div class="emboss-title">项目组集群 <span class="muted" style="font-size:11px">4 · 项目组 7</span></div>
+            <div class="frame">
+              <div class="frame-title">默认 4</div>
+              <div class="item"><span class="ico"></span><span class="name">内容创作</span></div>
+              <div class="item"><span class="ico"></span><span class="name">小说创作</span></div>
+              <div class="item"><span class="ico"></span><span class="name">游戏开发_godot</span></div>
+              <div class="item"><span class="ico"></span><span class="name">法律支持</span></div>
+              <div class="frame-title" style="margin-top:4px">开发 1</div>
+              <div class="item"><span class="ico"></span><span class="name">教学_作业批改</span></div>
+            </div>
+            <button class="btn accent">＋ 添加项目组集群</button>
+          </div>
+        </div>
+
+        <!-- agents / skills -->
+        <div class="col">
+          <div class="card">
+            <div class="emboss-title">agents <span class="muted" style="font-size:11px">0 · 目录 0</span></div>
+            <div class="frame">
+              <div class="frame-title">空</div>
+            </div>
+            <div class="emboss-title" style="margin-top:6px">skills <span class="muted" style="font-size:11px">0 · 目录 0</span></div>
+            <div class="frame">
+              <div class="frame-title">空</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div style="padding:0 6px 6px 6px">
+      <div class="bottom-row">
+        <div class="bottom-card"><div class="emboss-title" style="font-size:13px">链接记录</div></div>
+        <div class="bottom-card"><div class="emboss-title" style="font-size:13px">预览</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 组件展示区 ================= -->
+  <div class="showcase">
+    <h2>组件展示 · 当前方案（悬停 / 按下查看状态）</h2>
+
+    <div class="group">
+      <div class="group-label">按钮 · MiniGhost（外凸小按钮）</div>
+      <div class="row">
+        <button class="btn">常态</button>
+        <button class="btn accent">强调</button>
+        <button class="btn danger">危险</button>
+        <button class="btn primary">主按钮</button>
+        <button class="btn disabled">禁用</button>
+        <button class="btn ghost" title="图标按钮">✕</button>
+      </div>
+      <div class="hint">常态=NeuSurface+NeuBezel+NeuShadowSmall ｜ 悬停=NeuSurfaceHi+NeuBezelHi+NeuShadowFloat ｜ 按下=NeuInset+NeuBezelPress+无影</div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">勾选框 · CheckLabel（未选外凸 / 选中内凹+蓝勾）</div>
+      <div class="row">
+        <label class="check"><input type="checkbox"><span class="box"><svg viewBox="0 0 10 8"><path d="M0,4 L3,7 L9,1"/></svg></span>未选中</label>
+        <label class="check"><input type="checkbox" checked><span class="box"><svg viewBox="0 0 10 8"><path d="M0,4 L3,7 L9,1"/></svg></span>已选中</label>
+      </div>
+      <div class="hint">18×18 圆角5 ｜ 未选=NeuSurface+NeuBezel+NeuShadowSmall ｜ 选中=NeuInset+NeuBezelPress+内影+蓝勾</div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">输入框（内凹 NeuInset + 聚焦蓝描边）</div>
+      <div class="row">
+        <input class="input" style="width:220px" placeholder="链接名（可选）">
+        <input class="input" style="width:220px" placeholder="备注（可选）">
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">深色滚动条（内凹透明轨道 + 外凸滑块，悬停淡蓝）</div>
+      <div class="row">
+        <div class="scroll-demo" style="width:200px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="item"><span class="ico"></span><span class="name">条目一</span></div>
+            <div class="item"><span class="ico"></span><span class="name">条目二</span></div>
+            <div class="item"><span class="ico"></span><span class="name">条目三</span></div>
+            <div class="item"><span class="ico"></span><span class="name">条目四</span></div>
+            <div class="item"><span class="ico"></span><span class="name">条目五</span></div>
+            <div class="item"><span class="ico"></span><span class="name">条目六</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">标题样式（ColumnTitle / AppTitle / 浮雕 TitleEmboss）</div>
+      <div class="row" style="align-items:flex-end">
+        <span class="app-title">AppTitle 22</span>
+        <span class="col-title">ColumnTitle 18</span>
+        <span class="emboss-title">浮雕标题 Emboss</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
